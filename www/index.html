@@ -1,0 +1,224 @@
+<!DOCTYPE html> 
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1.0, user-scalable=no" charset="utf-8">
+  <title>UNbeaten</title>
+
+    <link rel="stylesheet" href="jquery-mobile/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="jquery-mobile/jquery.mobile.structure-1.4.5.min.css" />
+
+    <link rel="stylesheet" href="css/datebox.css" />
+    <link rel="stylesheet" href="css/general-styles.css">
+    <link rel="stylesheet" href="css/onsenui.css">
+    <link rel="stylesheet" href="css/onsen-override.css">
+    <link rel="stylesheet" href="css/onsen-css-components-dark-theme.css">
+    <link rel="stylesheet" href="css/ionicons/css/ionicons.css">
+    <link rel="stylesheet" href="css/list-avatars.css">
+    <link rel="stylesheet" href="css/games.css">
+    <link rel="stylesheet" href="css/details.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!--NOTE: All the scripts are loaded until the end of the file since angularJS demands it to be that way-->
+</head>
+
+<body onload="onBodyLoad()">
+  <html ng-app="myApp">
+  <ons-navigator title="Navigator" var="myNavigator">
+    <ons-page>
+      <ons-toolbar>
+         <div class="center">My Games</div>
+      <div class="right">
+          <ons-toolbar-button onclick="myNavigator.pushPage('addgame.html', { animation : 'simpleslide'} )"><ons-icon icon="ion-android-add" style="color: white"></ons-icon></ons-toolbar-button>
+       </div>
+      </ons-toolbar>
+
+      <ons-scroller>
+      <ons-list ng-controller="MyCtrl">
+
+      <div>
+          <ons-list-header ng-click="toggleGroup(groups[0])" class="title" ng-class="{active:isGroupShown(groups[0])}">
+            <ons-icon icon="ion-chevron-down" ng-if="isGroupShown(groups[0])"></ons-icon>
+            <ons-icon icon="ion-chevron-right" ng-if="!isGroupShown(groups[0])"></ons-icon>
+            {{groups[0].name}}
+          </ons-list-header>
+          <ons-list-item  class="item-accordion" ng-repeat="item in groups[0].items" ng-show="isGroupShown(groups[0])">
+          <div class="list-item-left">
+            <img src="https://media3.giphy.com/media/o3PUW7lSMFY5y/200_s.gif" class="avator">
+          </div>
+          <div class="list-item-right">
+            <div class="list-item-content">
+              <div class="name">Mass Effect 3
+                <span class="lucent">PS3</span>
+                <br>
+                <span class="desc">ADDED ONE MONTH AGO</span>
+              </div>
+            </div>
+          </div>
+          </ons-list-item>
+        </div>
+
+        <div ng-repeat="group in groups" ng-show="!$first">
+          <ons-list-header ng-click="toggleGroup(group)" class="title" ng-class="{active:isGroupShown(group)}">
+            <ons-icon icon="ion-chevron-down" ng-if="isGroupShown(group)"></ons-icon>
+            <ons-icon icon="ion-chevron-right" ng-if="!isGroupShown(group)"></ons-icon>
+            {{group.name}}
+          </ons-list-header>
+          <ons-list-item modifier="chevron" class="item-container" ng-repeat="item in group.items" ng-show="isGroupShown(group)">
+          <div class="list-item-left">
+            <img src="https://media3.giphy.com/media/o3PUW7lSMFY5y/200_s.gif" class="avator">
+          </div>
+          <div class="list-item-right">
+            <div class="list-item-content">
+              <div class="name">Mass Effect 3
+                <span class="lucent">PS3</span>
+                <br>
+                <span class="desc">ADDED ONE MONTH AGO</span>
+              </div>
+            </div>
+          </div>
+          </ons-list-item>
+        </div>
+      </ons-list>
+       </ons-scroller>
+    </ons-page>
+
+  <ons-template id="addgame.html">
+        <ons-page>
+        <ons-toolbar>
+          <div class="center">
+            Add Game
+          </div>
+          <div class="left">
+            <ons-toolbar-button onclick="myNavigator.popPage()">
+              <ons-icon icon="ion-arrow-left-c" fixed-width="false" style="vertical-align: -4px;"></ons-icon>
+            </ons-toolbar-button>
+          </div>
+        </ons-toolbar>
+
+        <div class="navigation-bar">
+          <div class="navigation-bar__center">
+            <input id="bar" type="text" class="search-input" style="width: 96%; margin: 6px auto 6px auto;" placeholder="Search" > 
+          </div>
+        </div>
+
+        <ons-button  id="manual_game" modifier="large" onclick="myNavigator.pushPage('insertgame.html', { animation : 'lift'} )"  ng-click="load()">Add a Game Manually</ons-button>
+
+            </ons-page>
+      </ons-template>
+
+        <ons-template id="insertgame.html">
+      <ons-page>
+  
+         <ons-page modifier="shop-details">
+ <ons-toolbar modifier="transparent" ng-controller="NotificationController">
+          <div class="left">
+            <ons-toolbar-button onclick="myNavigator.popPage()"><ons-icon icon="ion-arrow-left-c" style="color: white; font-size: 28px;" fixed-width="false"></ons-icon></ons-toolbar-button>
+          </div>
+          <div class="right">
+             <ons-toolbar-button  ng-click="confirm()" modifier="tappable"><ons-icon  icon="ion-android-camera" style="color: white; font-size: 28px; margin-right:10px" fixed-width="false" ></ons-icon></ons-toolbar-button></div>
+        </ons-toolbar>
+  
+          <div class="card" id="detail_image"> 
+                 <div class="overlay"></div>
+        </div>
+
+        <div class="i">
+          <div class="rating" id="rating">
+            <div class="rating-num">
+              <ons-icon icon="fa-star" fixed-width="false"></ons-icon>
+              <ons-icon icon="fa-star" fixed-width="false"></ons-icon>
+              <ons-icon icon="fa-star" fixed-width="false"></ons-icon>
+              <ons-icon icon="fa-star" fixed-width="false"></ons-icon>
+              <ons-icon icon="fa-star" fixed-width="false"></ons-icon>
+              5
+          </div>
+         </div>
+
+
+  <div class="gameContainer">
+      <br>
+      <div class="prop-desc">
+         <label for="">Genres: </label>
+        <input id="genres" type="text" class="text-input"  value="">
+      </div>
+      <br>
+      <div class="prop-desc" >
+         <label for="">Release Date: </label>
+        <input id="releaseDate" type="text" class="text-input" value="">
+      </div>
+
+      <br>
+      <div class="prop-desc" >
+         <label for="">Developer: </label>
+        <input id="developer" type="text" class="text-input" value="">
+      </div>
+
+      <br>
+      <div class="prop-desc" >
+         <label for="">Estimated Time to Complete: </label><br>
+        <input id="timeComplete" type="text" class="text-input"  value="">
+      </div>
+
+      <br>
+    <div >
+         <label for="">Categoria: </label><br><br>
+        <div class="button-bar" style="width:280px;" >
+        <div class="button-bar__item" >
+          <input type="radio" name="categoriaSel" id="cat_" value="" checked>
+          <button class="button-bar__button">One</button>
+        </div>
+
+        <div class="button-bar__item" >
+          <input type="radio" name="categoriaSel" id="cat_" value="">
+          <button class="button-bar__button">Two</button>
+        </div>
+
+        <div class="button-bar__item" >
+          <input type="radio" name="categoriaSel" id="cat_" value="">
+          <button class="button-bar__button">Three</button>
+        </div>
+
+        <div class="button-bar__item" >
+          <input type="radio" name="categoriaSel" id="cat_" value="">
+          <button class="button-bar__button">Four</button>
+        </div>
+    </div>
+    </div >
+
+    <div class="prop-desc" >
+         <label for="">Notas: </label><br><br>
+        <textarea  class="prop-desc" cols="40" rows="8" name="ta_body" id="ta_body" placeholder="Notas..."></textarea>
+    </div>
+
+        <br>
+        <ons-button  id="save_btn" modifier="large" class="button button--large--quiet">SAVE</ons-button>
+</div>
+        
+    <br>
+      
+</div>
+
+      </ons-page>
+  </ons-navigator>
+  </ons-page>
+
+  </ons-template>
+
+  </html>
+      <script src="js/angular/angular.js"></script>
+      <script src="jquery-mobile/jquery-1.11.1.min.js"></script>
+      <script src="jquery-mobile/jquery.mobile-1.4.5.min.js"></script>
+       <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="http://cdn.jtsage.com/external/jquery.mousewheel.min.js"></script>
+    <script type="text/javascript" src="http://dev.jtsage.com/dboxdev/js/doc.js"></script>
+    <script type="text/javascript" src="js/core.js"></script>
+    <script type="text/javascript" src="js/datebox.js"></script>
+    <script type="text/javascript" src="js/labels.js"></script>
+      <script src="js/onsenui.js"></script>
+      <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-animate.js'></script>
+      <script src="js/generalJS.js"></script>
+  </body>
+
+
+
+</html>

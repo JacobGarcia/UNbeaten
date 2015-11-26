@@ -1,0 +1,107 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1.0, user-scalable=no" charset="utf-8">
+<title>UNPlayed</title>
+
+    <link rel="stylesheet" href="jquery-mobile/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="jquery-mobile/jquery.mobile.structure-1.4.5.min.css" />
+   <!-- <link rel="stylesheet" href="css/jquery-styles-1.4.5.css" />
+    <link rel="stylesheet" href="css/datebox.css" /> -->
+    <link rel="stylesheet" href="css/onsenui.css">
+    <link rel="stylesheet" href="css/onsen-css-components-dark-theme.css">
+    <link rel="stylesheet" href="css/details.css">
+    <link rel="stylesheet" href="css/ionicons/css/ionicons.css">
+
+     <script src="js/angular/angular.js"></script>
+
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.js"></script>
+    <script src="jquery-mobile/jquery.mobile-1.4.5.min.js"></script>
+     <script type="text/javascript" src="http://cdn.jtsage.com/external/jquery.mousewheel.min.js"></script>
+    <script type="text/javascript" src="http://dev.jtsage.com/dboxdev/js/doc.js"></script>
+    <script type="text/javascript" src="js/core.js"></script>
+    <script type="text/javascript" src="js/datebox.js"></script>
+    <script type="text/javascript" src="js/labels.js"></script>
+
+   
+    <script src="js/onsenui.js"></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-animate.js'></script>
+    <script src="js/generalJS.js"></script>
+
+    <script>
+      ons.bootstrap();
+    </script>
+
+  </head>
+  <body onload="onBodyLoad()">
+    <ons-page>
+      <ons-page modifier="shop-details">
+        <ons-toolbar modifier="transparent">
+          <div class="left">
+            <ons-toolbar-button><ons-icon icon="ion-arrow-left-c" style="color: white; font-size: 28px;" fixed-width="false"></ons-icon></ons-toolbar-button>
+          </div>
+        </ons-toolbar>
+
+
+          <div class="card" id="detail_image"> 
+                 <div class="overlay"></div>
+            <div class="card-name">BioShock Infinite</div>
+            <div class="card-desc">Players: <h1 id = "players" class="title_description">1</h1></div>
+            <div class="card-desc">Genres:  <h1 id ="genres"  class="title_description"> Action, Role-Playing</h1> </div>
+            <div class="card-desc">Release Date: <h1 id = "r_date"  class="title_description"> 03/24/2015 </h1></div>
+            <div class="card-desc">Platform: <h1 id = "platform"  class="title_description">Sony Playstation 4</h1></div>
+            <div class="card-desc">Developer:  <h1 id = "developer"  class="title_description">FromSoftware, Inc.</h1></div>
+
+        </div>
+
+
+        <div class="rating" id="rating"><div class="rating-num">
+            <ons-icon icon="fa-star" fixed-width="false"></ons-icon>
+            <ons-icon icon="fa-star" fixed-width="false"></ons-icon>
+            <ons-icon icon="fa-star" fixed-width="false"></ons-icon>
+            <ons-icon icon="fa-star" fixed-width="false"></ons-icon>
+            <ons-icon icon="fa-star" fixed-width="false"></ons-icon>
+            10
+        </div></div>
+
+      <div class="profile-card">
+        <div>
+          <ons-button id="b_clock"><ons-icon icon="ion-android-time" fixed-width="false" size="50px" style="color:black"></ons-icon></ons-button>
+          <div class="timer-estimated-num">11h:45m</div>
+        </div>
+      <div>
+        <div class="profile-name">I'm playing it!</div>
+        <div class="estimated-name">Estimated Time</div>
+      </div>
+      </div>
+
+
+  <div class="gameContainer">
+      <div class="prop-desc" >
+           <div class="timer-clock">Time Playing</div>
+           <div class="timer-num">00h:00m</div>
+      </div>
+
+  </div>
+
+
+
+  </div>
+      <br>
+    <div class="timer-clock">Sticky Notes
+            <textarea  class="prop-desc" cols="40" rows="8" name="ta_body" id="ta_body" ></textarea></div>
+    <div>
+    
+  </div>
+
+
+</body>
+
+
+        <br>
+        <ons-button  id="login_btn" modifier="large" onclick="onLogin()">Save</ons-button>
+
+      </ons-page>
+
+  </ons-page>
+</html>

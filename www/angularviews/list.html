@@ -1,0 +1,33 @@
+<html ng-app="myApp">
+
+ <script src="angular.js"></script>
+ <script src="onsenui.js"></script>
+  <script src="myJS.js"></script>
+
+  <link rel="stylesheet" href="styles.css">
+
+<ons-navigator title="Navigator" var="myNavigator">
+  <ons-page>
+    <ons-toolbar>
+      <div class="center">List + Accordion</div>
+    </ons-toolbar>
+    <br>
+
+    <div ng-app="myContainer">
+      <ons-list ng-controller="MyCtrl">
+        <div ng-repeat="group in groups">
+          <ons-list-item ng-click="toggleGroup(group)" class="title" ng-class="{active:isGroupShown(group)}">
+            <ons-icon icon="minus-square-o" ng-if="isGroupShown(group)"></ons-icon>
+            <ons-icon icon="plus-square-o" ng-if="!isGroupShown(group)"></ons-icon>
+            Group {{group.name}}
+          </ons-list-item>
+          <ons-list-item class="item-accordion" ng-repeat="item in group.items" ng-show="isGroupShown(group)">
+            {{item}}
+          </ons-list-item>
+        </div>
+      </ons-list>
+    </div>
+  </ons-page>
+</ons-navigator>
+
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="css/onsenui.css">
+    <link rel="stylesheet" href="css/onsen-css-components-dark-theme.css">
+    <link rel="stylesheet" href="css/games.css">
+
+    <script src="js/angular/angular.js"></script>
+     <script src="js/onsenui.js"></script>
+     <script type="text/js/generalJS.js"></script>
+
+  </head>
+  <body>
+    <ons-navigator title="Navigator" var="thisNavigator">
+      <ons-page>
+        <ons-toolbar>
+          <div class="center">
+            Add Game
+          </div>
+          <div class="left">
+            <ons-toolbar-button onclick="myNavigator.popPage()">
+              <ons-icon icon="ion-arrow-left-c" fixed-width="false" style="vertical-align: -4px;"></ons-icon>
+            </ons-toolbar-button>
+          </div>
+        </ons-toolbar>
+
+        <div class="navigation-bar">
+          <div class="navigation-bar__center">
+            <input id="bar" type="text" class="search-input" style="width: 96%; margin: 6px auto 6px auto;" placeholder="Search" > 
+          </div>
+        </div>
+
+          <ons-button  id="manual_game" modifier="large" onclick="thisNavigator.pushPage('insertgame.html', { animation : 'lift' } )">Add a Game Manually</ons-button>
+
+
+
+      </ons-page>
+      </ons-navigator>
+
+  </body>
+</html>
