@@ -1,11 +1,11 @@
 /* Application variables */
 var db;
 
-function creaDB() {
-    db.transaction(creaNuevaDB, errorDB, creaSuccess);
+function createDB() {
+    db.transaction(createNewDB, errorDB, createSuccess);
 }
 
-function creaNuevaDB(tx) {
+function createNewDB(tx) {
 
     tx.executeSql('DROP TABLE IF EXISTS videogame');
     tx.executeSql('DROP TABLE IF EXISTS categoria');
@@ -53,29 +53,29 @@ function creaNuevaDB(tx) {
 
 }
 
-function creaSuccess() {
-    //window.localStorage.setItem("existeDB", 1);
-    cargaDatos();
+function createSuccess() {
+    //window.localStorage.setItem("existsDB", 1);
+    loadData();
 }
 
 function errorDB(err) {
     alert("Error processing SQL " + err.code);
 }
 
-function cargaDatos() {
+function loadData() {
     db.transaction(cargaRegistros, errorDB);
     db.transaction(loadCategories, errorDB);
 }
 
 function cargaRegistros(tx) {
-    tx.executeSql('SELECT * FROM videogame;', [], cargaDatosSuccess, errorDB);
+    tx.executeSql('SELECT * FROM videogame;', [], loadDataSuccess, errorDB);
 }
 
 function loadCategories(tx) {
     tx.executeSql('SELECT * FROM categoria;', [], loadCategoriesSuccess, errorDB);
 }
 
-function cargaDatosSuccess(tx, results) {
+function loadDataSuccess(tx, results) {
     alert("Recieved " + results.rows.length + " from the DB");
     if (results.rows.length == 0) {
         alert("There are no registers in the DB");

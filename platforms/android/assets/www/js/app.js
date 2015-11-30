@@ -1,5 +1,5 @@
 /* This is used to check if the database in the application context */
-var existeDB;
+var existsDB;
 
 /* Define app as an angular module including onsenui and a framework of angular animations */
 (function () {
@@ -10,14 +10,14 @@ var existeDB;
 
         alert("The device is OnReady!");
 
-        existeDB = window.localStorage.getItem("existeDB");
+        existsDB = window.localStorage.getItem("existsDB");
         db = window.openDatabase("videogame", "1.0", "Database for local videogames list", 200000);
 
 
-        if (existeDB === null) {
-            creaDB();
+        if (existsDB === null) {
+            createDB();
         } else {
-            cargaDatos();
+            loadData();
         }
     
         angular.bootstrap(document, ['myApp']);
