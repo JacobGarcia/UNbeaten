@@ -13,20 +13,11 @@ var existsDB;
         db = window.openDatabase("unbeatendb", "1.0", "Database for local videogames list", 200000);
 
                 
-        function prueba(){
-            createDB();
-            return true;
-        }
 
         if (existsDB === null) {
-            prueba().then(bootstrapApplication());
+            createDB();
         } else {
             loadData();
-        }
-
-        function bootstrapApplication() {
-            angular.bootstrap(document, ['myApp']);
-            alert("Bootstrap!");
         }
 
     }, false);

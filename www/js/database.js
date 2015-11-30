@@ -12,7 +12,7 @@ function pushGame(game) {
         items: []
     };
     this.games[game.category].items.push(game);
-    //alert(this.games[game.category].items[0].name);
+    alert(this.games[game.category].items[0].name);
 }
 
 function readToField(results) {
@@ -110,4 +110,12 @@ function loadDataSuccess(tx, results) {
 function loadCategoriesSuccess(tx, results) {
     alert("Recieved " + results.rows.length + " categories from the DB");
     setCategories(results.rows);
+
+    bootstrapApplication();
+}
+
+
+function bootstrapApplication() {
+    angular.bootstrap(document, ['myApp']);
+    alert("Bootstrap!");
 }
