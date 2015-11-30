@@ -1,5 +1,27 @@
 /* Application variables */
 var db;
+var categories = new Array();
+var games = new Array();
+
+function setCategories(categories) {
+    this.categories = categories;
+}
+
+function pushGame(game) {
+    this.games[game.category] = {
+        items: []
+    };
+    this.games[game.category].items.push(game);
+    alert(this.games[game.category].items[0].name);
+}
+
+function readToField(results) {
+
+    for (var i = 0; i < results.rows.length; i++) {
+        var game = results.rows.item(i);
+        pushGame(game);
+    }
+}
 
 function createDB() {
     db.transaction(createNewDB, errorDB, createSuccess);
@@ -27,11 +49,11 @@ function createNewDB(tx) {
         "category VARCHAR(50), " +
         "FOREIGN KEY(category) REFERENCES categoria(name))";
 
-    var categoriaSql = "CREATE TABLE IF NOT EXISTS categoria ( " +
+    var categorySql = "CREATE TABLE IF NOT EXISTS categoria ( " +
         "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
         "name VARCHAR(50))";
 
-    tx.executeSql(categoriaSql);
+    tx.executeSql(categorySql);
     tx.executeSql(sql);
 
     alert("Both tables have been created");
@@ -63,11 +85,11 @@ function errorDB(err) {
 }
 
 function loadData() {
-    db.transaction(cargaRegistros, errorDB);
+    db.transaction(loadRegisters, errorDB);
     db.transaction(loadCategories, errorDB);
 }
 
-function cargaRegistros(tx) {
+function loadRegisters(tx) {
     tx.executeSql('SELECT * FROM videogame;', [], loadDataSuccess, errorDB);
 }
 
@@ -81,10 +103,10 @@ function loadDataSuccess(tx, results) {
         alert("There are no registers in the DB");
     }
 
-    //readToField(results);
+    readToField(results);
 }
 
 function loadCategoriesSuccess(tx, results) {
     alert("Recieved " + results.rows.length + " categories from the DB");
-    //window.setCategories(results.rows);
+    setCategories(results.rows);
 }
