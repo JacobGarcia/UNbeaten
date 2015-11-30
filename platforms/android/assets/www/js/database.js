@@ -30,7 +30,7 @@ function createDB() {
 function createNewDB(tx) {
 
     tx.executeSql('DROP TABLE IF EXISTS videogame');
-    tx.executeSql('DROP TABLE IF EXISTS categoria');
+    tx.executeSql('DROP TABLE IF EXISTS category');
 
     var sql = "CREATE TABLE IF NOT EXISTS videogame ( " +
         "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -47,9 +47,9 @@ function createNewDB(tx) {
         "banner VARCHAR(150), " +
         "date_added TIMESTAMP DEFAULT CURRENT_TIMESTAMP, " +
         "category VARCHAR(50), " +
-        "FOREIGN KEY(category) REFERENCES categoria(name))";
+        "FOREIGN KEY(category) REFERENCES category(name))";
 
-    var categorySql = "CREATE TABLE IF NOT EXISTS categoria ( " +
+    var categorySql = "CREATE TABLE IF NOT EXISTS category ( " +
         "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
         "name VARCHAR(50))";
 
@@ -58,10 +58,10 @@ function createNewDB(tx) {
 
     alert("Both tables have been created");
 
-    tx.executeSql("INSERT INTO categoria (id,name) VALUES (1,'Unbeaten')");
-    tx.executeSql("INSERT INTO categoria (id,name) VALUES (2,'Not 100%')");
-    tx.executeSql("INSERT INTO categoria (id,name) VALUES (3,'Unplayed')");
-    tx.executeSql("INSERT INTO categoria (id,name) VALUES (4,'Unbeatable')");
+    tx.executeSql("INSERT INTO category (id,name) VALUES (1,'Unbeaten')");
+    tx.executeSql("INSERT INTO category (id,name) VALUES (2,'Not 100%')");
+    tx.executeSql("INSERT INTO category (id,name) VALUES (3,'Unplayed')");
+    tx.executeSql("INSERT INTO category (id,name) VALUES (4,'Unbeatable')");
 
     tx.executeSql("INSERT INTO videogame (id,name,players,genres,release_date,platform,developer,time_playing,complete_time,notes,rating,banner,category) VALUES (1,'Silent Hills','No','Horror, Puzzle','2014-08-14 00:00:00','PS4','Kojima Productions','00h:00m','01h:39m','Sample Note',5.0,'http://static.giantbomb.com/uploads/scale_large/0/6087/2669677-2669609-2114550608-fropq.jpg','Unbeaten')");
 
@@ -94,7 +94,7 @@ function loadRegisters(tx) {
 }
 
 function loadCategories(tx) {
-    tx.executeSql('SELECT * FROM categoria;', [], loadCategoriesSuccess, errorDB);
+    tx.executeSql('SELECT * FROM category;', [], loadCategoriesSuccess, errorDB);
 }
 
 function loadDataSuccess(tx, results) {

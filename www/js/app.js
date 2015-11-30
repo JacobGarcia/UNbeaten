@@ -11,7 +11,7 @@ var existsDB;
         alert("The device is OnReady!");
 
         existsDB = window.localStorage.getItem("existsDB");
-        db = window.openDatabase("videogame", "1.0", "Database for local videogames list", 200000);
+        db = window.openDatabase("unbeatendb", "1.0", "Database for local videogames list", 200000);
 
 
         if (existsDB === null) {
