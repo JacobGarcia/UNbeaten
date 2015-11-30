@@ -4,7 +4,7 @@
     app.controller('MyCtrl', function ($scope) {
         $scope.groups = [];
 
-        for (var i = 0; i < 4; i++) {
+        for (var i = 0; i < categories.length; i++) {
             $scope.groups[i] = {
                 name: i,
                 items: []

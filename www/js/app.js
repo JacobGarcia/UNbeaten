@@ -4,7 +4,6 @@ var existsDB;
 /* Define app as an angular module including onsenui and a framework of angular animations */
 (function () {
     var app = angular.module('myApp', ['onsen.directives', 'ngAnimate']);
-
     /* OnDeviceReady definition including bootstrap of the application*/
     document.addEventListener('deviceready', function () {
 
@@ -13,14 +12,22 @@ var existsDB;
         existsDB = window.localStorage.getItem("existsDB");
         db = window.openDatabase("unbeatendb", "1.0", "Database for local videogames list", 200000);
 
+                
+        function prueba(){
+            createDB();
+            return true;
+        }
 
         if (existsDB === null) {
-            createDB();
+            prueba().then(bootstrapApplication());
         } else {
             loadData();
         }
-    
-        angular.bootstrap(document, ['myApp']);
-        alert("Bootstrap!");
+
+        function bootstrapApplication() {
+            angular.bootstrap(document, ['myApp']);
+            alert("Bootstrap!");
+        }
+
     }, false);
 })();

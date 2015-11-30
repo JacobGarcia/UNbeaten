@@ -12,7 +12,7 @@ function pushGame(game) {
         items: []
     };
     this.games[game.category].items.push(game);
-    alert(this.games[game.category].items[0].name);
+    //alert(this.games[game.category].items[0].name);
 }
 
 function readToField(results) {
