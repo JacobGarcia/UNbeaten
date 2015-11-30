@@ -25,6 +25,4 @@
         angular.bootstrap(document, ['myApp']);
         alert("Bootstrap!");
     }, false);
-
-    
 })();
