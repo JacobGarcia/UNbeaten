@@ -35,6 +35,7 @@ function createNewDB(tx) {
     var sql = "CREATE TABLE IF NOT EXISTS videogame ( " +
         "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
         "name VARCHAR(120), " +
+        "image VARCHAR(150), " +
         "players VARCHAR(3), " +
         "genres VARCHAR(100), " +
         "release_date DATETIME, " +
@@ -63,13 +64,13 @@ function createNewDB(tx) {
     tx.executeSql("INSERT INTO category (id,name) VALUES (3,'Unplayed')");
     tx.executeSql("INSERT INTO category (id,name) VALUES (4,'Unbeatable')");
 
-    tx.executeSql("INSERT INTO videogame (id,name,players,genres,release_date,platform,developer,time_playing,complete_time,notes,rating,banner,category) VALUES (1,'Silent Hills','No','Horror, Puzzle','2014-08-14 00:00:00','PS4','Kojima Productions','00h:00m','01h:39m','Sample Note',5.0,'http://static.giantbomb.com/uploads/scale_large/0/6087/2669677-2669609-2114550608-fropq.jpg','Unbeaten')");
+    tx.executeSql("INSERT INTO videogame (id,name,image,players,genres,release_date,platform,developer,time_playing,complete_time,notes,rating,banner,category) VALUES (1,'Silent Hills','http://static.giantbomb.com/uploads/square_avatar/0/6087/2669677-2669609-2114550608-fropq.jpg','No','Horror, Puzzle','2014-08-14 00:00:00','PS4','Kojima Productions','00h:00m','01h:39m','Sample Note',5.0,'http://static.giantbomb.com/uploads/scale_large/0/6087/2669677-2669609-2114550608-fropq.jpg','Unbeaten')");
 
-    tx.executeSql("INSERT INTO videogame (id,name,players,genres,release_date,platform,developer,time_playing,complete_time,notes,rating,banner,category) VALUES (2,'Resident Evil','No','Action-Adventure','1996-03-22 00:00:00','PS1','Capcom','00h:00m','06h:37m','Test',4.5,'http://static.giantbomb.com/uploads/scale_large/13/139866/2558376-3273635912-62096.png','Not 100%')");
+    tx.executeSql("INSERT INTO videogame (id,name,image,players,genres,release_date,platform,developer,time_playing,complete_time,notes,rating,banner,category) VALUES (2,'Resident Evil','http://static.giantbomb.com/uploads/square_avatar/8/87790/1790011-box_re.png','No','Action-Adventure','1996-03-22 00:00:00','PS1','Capcom','00h:00m','06h:37m','Test',4.5,'http://static.giantbomb.com/uploads/scale_large/13/139866/2558376-3273635912-62096.png','Not 100%')");
 
-    tx.executeSql("INSERT INTO videogame (id,name,players,genres,release_date,platform,developer,time_playing,complete_time,notes,rating,banner,category) VALUES (3,'The Witcher 3: Wild Hunt','No','Role-Playing','2015-05-19 00:00:00','PC','CD Projekt RED Sp. z o.o.','00h:00m','43h:37m','Wolf Note',4.5,'http://static.giantbomb.com/uploads/scale_large/25/252703/2759851-2015-06-17_00004.jpg','Unplayed')");
+    tx.executeSql("INSERT INTO videogame (id,name,image,players,genres,release_date,platform,developer,time_playing,complete_time,notes,rating,banner,category) VALUES (3,'The Witcher 3: Wild Hunt','http://static.giantbomb.com/uploads/square_avatar/0/3699/2698809-the+witcher+3+-+wild+hunt+v7.jpg','No','Role-Playing','2015-05-19 00:00:00','PC','CD Projekt RED Sp. z o.o.','00h:00m','43h:37m','Wolf Note',4.5,'http://static.giantbomb.com/uploads/scale_large/25/252703/2759851-2015-06-17_00004.jpg','Unplayed')");
 
-    tx.executeSql("INSERT INTO videogame (id,name,players,genres,release_date,platform,developer,time_playing,complete_time,notes,rating,banner,category) VALUES (4,'Bishi Bashi Special','Yes','Action','1998-12-31 00:00:00','PS1','Konami Computer Entertainment Sapporo Co., Ltd','00h:00m','01h:53m','Japan',-1.0,'http://static.giantbomb.com/uploads/scale_large/0/1220/213448-bishi_bashi_special_front.jpg','Unbeatable')");
+    tx.executeSql("INSERT INTO videogame (id,name,image,players,genres,release_date,platform,developer,time_playing,complete_time,notes,rating,banner,category) VALUES (4,'Bishi Bashi Special','http://static.giantbomb.com/uploads/square_avatar/0/1220/213448-bishi_bashi_special_front.jpg','Yes','Action','1998-12-31 00:00:00','PS1','Konami Computer Entertainment Sapporo Co., Ltd','00h:00m','01h:53m','Japan',-1.0,'http://static.giantbomb.com/uploads/scale_large/0/1220/213448-bishi_bashi_special_front.jpg','Unbeatable')");
 
     alert("All INSERTS are ok");
 
