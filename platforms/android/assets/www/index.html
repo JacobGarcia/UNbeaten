@@ -29,6 +29,9 @@
 
     <!-- OnsenUI JS Framework -->
     <script src="js/onsenui.js"></script>
+    
+    <!-- Momemnt.js for date manipulation -->
+    <script src="js/moment.js"></script>
 
     <!-- Main JS for application logic -->
     <script src="js/database.js"></script>
@@ -61,14 +64,14 @@
                         </ons-list-header>
                         <ons-list-item modifier="chevron" class="item-container" ng-repeat="item in group.items" ng-show="isGroupShown(group)">
                             <div class="list-item-left">
-                                <img src="https://media3.giphy.com/media/o3PUW7lSMFY5y/200_s.gif" class="avator">
+                                <img src="{{item.image}}" class="avator">
                             </div>
                             <div class="list-item-right">
                                 <div class="list-item-content">
-                                    <div class="name">Mass Effect 3
-                                        <span class="lucent">PS3</span>
+                                    <div class="name">{{item.name}}
+                                        <span class="lucent">{{item.platform}}</span>
                                         <br>
-                                        <span class="desc">ADDED ONE MONTH AGO</span>
+                                        <span class="desc">{{item.date_added}}</span>
                                     </div>
                                 </div>
                             </div>

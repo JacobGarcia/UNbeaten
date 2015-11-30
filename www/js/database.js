@@ -19,6 +19,7 @@ function readToField(results) {
 
     for (var i = 0; i < results.rows.length; i++) {
         var game = results.rows.item(i);
+        game.date_added = moment(game.date_added).fromNow();
         pushGame(game);
     }
 }
@@ -46,7 +47,7 @@ function createNewDB(tx) {
         "notes TEXT, " +
         "rating FLOAT, " +
         "banner VARCHAR(150), " +
-        "date_added TIMESTAMP DEFAULT CURRENT_TIMESTAMP, " +
+        "date_added DATE DEFAULT (datetime('now','localtime')), " +
         "category VARCHAR(50), " +
         "FOREIGN KEY(category) REFERENCES category(name))";
 

@@ -1,8 +1,10 @@
 (function () {
-     var app = angular.module('myApp', ['onsen.directives', 'ngAnimate']);
+    var app = angular.module('myApp', ['onsen.directives', 'ngAnimate']);
     /* Angularn controller for lists logic */
     app.controller('MyCtrl', function ($scope) {
         $scope.groups = [];
+        $scope.date = [];
+        $scope.var = 2;
 
         for (var i = 0; i < categories.length; i++) {
             $scope.groups[categories[i].id] = {
@@ -19,6 +21,14 @@
             /* Show the first group */
             $scope.shownGroup = $scope.groups[1];
             $isFirstTime = false;
+
+            //  $scope.showDuration = function(group,item) {
+            var now = new Date();
+
+            // Convert date string to a Date object
+            var then = $scope.groups[categories[i].id].items[0].name;
+            $scope.date[i] = then;
+            //   }
         }
 
         /*
@@ -37,9 +47,11 @@
         $scope.isGroupShown = function (group) {
 
             return $scope.shownGroup === group;
-        }
+        };
+
+
     });
-    
+
     app.controller('NotificationController', function ($scope, $compile) {
         $scope.alert = function () {
             ons.notification.alert({
