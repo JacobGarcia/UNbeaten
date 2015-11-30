@@ -52,27 +52,6 @@
             <ons-scroller>
                 <ons-list ng-controller="MyCtrl">
 
-                    <div>
-                        <ons-list-header ng-click="toggleGroup(groups[0])" class="title" ng-class="{active:isGroupShown(groups[0])}">
-                            <ons-icon icon="ion-chevron-down" ng-if="isGroupShown(groups[0])"></ons-icon>
-                            <ons-icon icon="ion-chevron-right" ng-if="!isGroupShown(groups[0])"></ons-icon>
-                            {{groups[0].name}}
-                        </ons-list-header>
-                        <ons-list-item class="item-accordion" ng-repeat="item in groups[0].items" ng-show="isGroupShown(groups[0])">
-                            <div class="list-item-left">
-                                <img src="https://media3.giphy.com/media/o3PUW7lSMFY5y/200_s.gif" class="avator">
-                            </div>
-                            <div class="list-item-right">
-                                <div class="list-item-content">
-                                    <div class="name">Mass Effect 3
-                                        <span class="lucent">PS3</span>
-                                        <br>
-                                        <span class="desc">ADDED ONE MONTH AGO</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </ons-list-item>
-                    </div>
 
                     <div ng-repeat="group in groups" ng-show="!$first">
                         <ons-list-header ng-click="toggleGroup(group)" class="title" ng-class="{active:isGroupShown(group)}">

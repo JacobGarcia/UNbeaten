@@ -5,36 +5,10 @@
         $scope.groups = [];
 
         for (var i = 0; i < categories.length; i++) {
-            $scope.groups[i] = {
-                name: i,
-                items: []
+            $scope.groups[categories[i].id] = {
+                name: categories[i].name,
+                items: games[categories[i].name].items
             };
-            /* Categories */
-            $scope.groups[0] = {
-                name: "Unbeaten",
-                items: []
-            };
-
-            $scope.groups[1] = {
-                name: "Not 100%",
-                items: []
-            };
-
-            $scope.groups[2] = {
-                name: "Unplayed",
-                items: []
-            };
-
-            $scope.groups[3] = {
-                name: "Unbeatable",
-                items: []
-            };
-
-            for (var i = 0; i < $scope.groups.length; i++) {
-                for (var j = 0; j < 2; j++) {
-                    $scope.groups[i].items.push(i + "-" + j);
-                }
-            }
 
             /* Set Unbeaten category as default list open */
             $scope.status = {
@@ -43,7 +17,7 @@
             };
 
             /* Show the first group */
-            $scope.shownGroup = $scope.groups[0];
+            $scope.shownGroup = $scope.groups[1];
             $isFirstTime = false;
         }
 

@@ -12,8 +12,6 @@ var existsDB;
         existsDB = window.localStorage.getItem("existsDB");
         db = window.openDatabase("unbeatendb", "1.0", "Database for local videogames list", 200000);
 
-                
-
         if (existsDB === null) {
             createDB();
         } else {
